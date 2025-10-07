@@ -19,5 +19,6 @@ const upload = multer({ storage: storage });
 
 router.post("/",upload.single('image'), AC.createData);
 router.get("/", AC.viewData);
+router.delete("/:id", AC.deleteData);
 
 module.exports = router;

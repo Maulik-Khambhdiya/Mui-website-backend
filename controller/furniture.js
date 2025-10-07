@@ -37,3 +37,25 @@ exports.viewData = async (req, res) => {
     });
   }
 };
+
+
+exports.deleteData = async (req, res) => {
+  try {
+    const deleteId = req.params.id;
+
+    const checkUser = await API.findById(deleteId);
+    if (!checkUser) throw new Error("User Not Found");
+
+    const deleteData = await API.findByIdAndDelete(deleteId);
+    res.status(200).json({
+      status: "Success",
+      message: "User Deleted Successfully",
+      data: deleteData,
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: "Fail",
+      message: error.message,
+    });
+  }
+};

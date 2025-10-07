@@ -25,11 +25,11 @@ const ItemSchema = new mongoose.Schema({
   },
   inStock: {
     type: Boolean,
-    default: true
+    default: false
   },
   image: {
     type: String,
-    required: false
+    required: true
   }
 });
 
